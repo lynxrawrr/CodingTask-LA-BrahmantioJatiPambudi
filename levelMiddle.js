@@ -1,11 +1,13 @@
 class LRUCache {
   constructor(capacity) {
     this.capacity = capacity;
-    this.map = new Map(); 
+    this.map = new Map();
   }
 
   get(key) {
-    if (!this.map.has(key)) return -1;
+    if (!this.map.has(key)) {
+      return -1;
+    }
 
     const val = this.map.get(key);
     this.map.delete(key);
@@ -26,7 +28,7 @@ class LRUCache {
       this.map.delete(lruKey);
     }
 
-    return null; 
+    return null;
   }
 }
 
