@@ -20,24 +20,33 @@ const isValid = function (s) {
       continue;
     }
 
-    if (stack.length === 0) return false;
+    if (stack.length === 0) {
+      return false;
+    }
 
     const top = stack.pop();
-    if (top !== pairs[ch]) return false;
+
+    if (top !== pairs[ch]) {
+      return false;
+    }
   }
 
-  return stack.length === 0;
+  if (stack.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 // --- CONTOH PEMANGGILAN DAN OUTPUT YANG DIHARAPKAN ---
-console.log(isValid("()"));        // true
-console.log(isValid("()[]{}"));    // true
-console.log(isValid("(]"));        // false
-console.log(isValid("([])"));      // true
-console.log(isValid("([)]"));      // false
-console.log(isValid("{[]}"));      // true
-console.log(isValid(""));          // true (tapi input minimal 1 karakter)
-console.log(isValid("((("));       // false
-console.log(isValid(")))"));       // false
-console.log(isValid("([{]}])"));   // false (contoh invalid)
-console.log(isValid("({[]})"));    // true
+console.log(isValid("()")); // true
+console.log(isValid("()[]{}")); // true
+console.log(isValid("(]")); // false
+console.log(isValid("([])")); // true
+console.log(isValid("([)]")); // false
+console.log(isValid("{[]}")); // true
+console.log(isValid("")); // true (tapi input minimal 1 karakter)
+console.log(isValid("(((")); // false
+console.log(isValid(")))")); // false
+console.log(isValid("([{]}])")); // false (contoh invalid)
+console.log(isValid("({[]})")); // true
